@@ -9,6 +9,7 @@ import { ServerApiService } from '../services/server-api.service';
 export class BlogListComponent implements OnInit {
 
   public blogList: BlogList;
+  public isLoading = true;
   constructor(private objServerApiService: ServerApiService) {
     this.blogList = { };
 
@@ -16,6 +17,7 @@ export class BlogListComponent implements OnInit {
 
   ngOnInit(): void {
     this.objServerApiService.GetBlogList().subscribe(a => {
+      this.isLoading = false;
       this.blogList = a;
     });
   }

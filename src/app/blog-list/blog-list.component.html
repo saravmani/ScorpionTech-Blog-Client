@@ -2,6 +2,8 @@
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
 
+      <div *ngIf="isLoading" Loading .. ></div>
+
       <div class="post-preview" *ngFor="let objBlogList of blogList?.listOfBlogPosts">
         <a [routerLink]="'/codeviewer/'+objBlogList.postId">
           <h6 class="post-title">
@@ -14,8 +16,6 @@
         <p class="post-meta">Posted on {{objBlogList.postedOn | date:'dd-mm-yyyy'}}</p>
         <hr>
       </div>
-
-
       <!-- <div class="clearfix">
           <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
         </div> -->
