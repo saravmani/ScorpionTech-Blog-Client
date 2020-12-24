@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- main
+- master
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -20,3 +20,17 @@ steps:
     npm install
     ng build --prod
   displayName: 'npm install and build'
+- task: FtpUpload@2
+  inputs:
+    credentialsOption: 'inputs'
+    serverUrl: 'ftp://win27.herosite.pro/'
+    username: 'saravmani'
+    password: 'Catwarcv123#'
+    rootDirectory: $(Build.SourcesDirectory)
+    filePatterns: '**'
+    remoteDirectory: '/httpdocs/wwwroot/ClientApp/'
+    clean: false
+    cleanContents: false
+    preservePaths: false
+    trustSSL: false
+    
