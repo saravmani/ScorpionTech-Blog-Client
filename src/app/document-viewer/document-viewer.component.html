@@ -1,0 +1,32 @@
+<div class="container">
+  <markdown data-label="my-label-button" lineHighlight [line]="'5, 1-5'" [lineOffset]="5"
+    [src]="documentBaseURL+documentId+'.md'"></markdown>
+  <hr>
+  <div class="row">
+    <div class="container   col-md-10">
+
+
+      <div class="form-group">
+        <label for="">Feedback</label>
+        <input type="text" class="form-control" name="" [(ngModel)]="feedback.userName" placeholder="Your Name ..">
+      </div>
+
+      <div class="form-group">
+
+        <input type="text" class="form-control" name="" [(ngModel)]="feedback.emailId" placeholder="Your E-Mail ..">
+      </div>
+
+
+      <div class="form-group">
+
+        <textarea class="form-control" name="" rows="5" [(ngModel)]="feedback.feedbackText"
+          placeholder="Feedback .."></textarea>
+      </div>
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-success" (click)="PostFeedback()">Post Your Feedback</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
