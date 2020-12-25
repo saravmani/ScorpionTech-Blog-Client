@@ -29,7 +29,7 @@ steps:
     rootDirectory: $(Build.SourcesDirectory)/dist/
     filePatterns: '**'
     remoteDirectory: '/httpdocs/wwwroot/ClientApp/'
-    clean: false
+    clean: true
     cleanContents: false
     preservePaths: false
     trustSSL: false
