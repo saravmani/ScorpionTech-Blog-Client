@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { DocumentLikes } from '../Model/DocumentLikes';
 
 import { Feedback } from '../Model/Feedback';
 @Injectable({
@@ -22,7 +23,10 @@ export class ServerApiService {
     return this.objHttpClient.post<any>(this.serverBaseURL + 'BloggerClient/PostFeedback', feedback);
 
   }
+  public PostBlogLiking(documentLikedetails: DocumentLikes): Observable<any> {
+    return this.objHttpClient.post<any>(this.serverBaseURL + 'BloggerClient/PostBlogLiking', documentLikedetails);
 
+  }
 
 
 }

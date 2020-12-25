@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  serviceBaseUrl: 'https://fullstack-lab.co.in/api/',
+  serviceBaseUrl: 'http://localhost:60923/api/',
+  // serviceBaseUrl: 'https://fullstack-lab.co.in/api/',
   documentBaseURL: 'https://fullstack-lab.co.in/docs/'
 
 };
