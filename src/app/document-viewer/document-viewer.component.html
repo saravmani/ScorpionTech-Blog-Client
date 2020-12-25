@@ -2,7 +2,7 @@
 
   <div *ngIf="!isDocLoaded" class="text-center" style="height:400px"> <br><br><br><br><br>Loading .. </div>
   <markdown data-label="my-label-button" lineHighlight [line]="'5, 1-5'" [lineOffset]="5"
-    [src]="documentBaseURL+postId+'.md'" (load)="onMarkDownDocLoad($event)"></markdown>
+    [src]="documentBaseURL+postId+'.md'" (load)="onMarkDownDocLoad()"></markdown>
   <hr *ngIf="isDocLoaded">
 
 
