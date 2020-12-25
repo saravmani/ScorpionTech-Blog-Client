@@ -18,7 +18,7 @@ export class DocumentViewerComponent implements OnInit {
   public documentBaseURL = environment.documentBaseURL;
   public isLiked = false;
   public isDisLiked = false;
-
+  public isDocLoaded = false;
   constructor(private activatedRoute: ActivatedRoute, private serverApiService: ServerApiService) { }
 
   ngOnInit(): void {
@@ -26,6 +26,9 @@ export class DocumentViewerComponent implements OnInit {
       this.postId = a.docid;
       this.feedback.postId = a.docid;
     });
+  }
+  onMarkDownDocLoad(): void {
+    this.isDocLoaded = true;
   }
 
   public PostFeedback(): void {
@@ -39,6 +42,7 @@ export class DocumentViewerComponent implements OnInit {
         this.Response.ResponseMessage = 'Feedback Posted Successfully !!';
         this.Response.MessageClass = 'text-success';
       }, (error) => {
+        this.inProgress = false;
         this.Response.ResponseMessage = 'Something went wrong. Please mail your feedback to admin@fullstack-lab.co.in';
         this.Response.MessageClass = 'text-danger';
       });
