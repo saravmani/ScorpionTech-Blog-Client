@@ -32,7 +32,7 @@ export class DocumentViewerComponent implements OnInit {
       this.feedback.postId = a.docid;
       this.serverApiService.GetBologDetailsById(a.docid).subscribe(rslt => {
         this.meta.addTag({ name: 'description', content: rslt.postDescription });
-        this.meta.addTag({ name: 'tags', content: rslt.Tags });
+        this.meta.addTag({ name: 'keywords', content: rslt.Tags });
         this.title.setTitle(rslt.postTitle);
       });
 

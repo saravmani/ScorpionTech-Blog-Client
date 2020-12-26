@@ -2,14 +2,12 @@
   <div class="row">
     <div *ngIf="isLoading" class="text-center" style="height:400px;width:100%"> <br><br><br><br><br>Loading .. </div>
     <div class="col-md-10 ">
-
-
-
       <div class="post-preview" *ngFor="let objBlogList of blogList?.listOfBlogPosts">
-        <a [routerLink]="'/codeviewer/'+objBlogList.postId">
+        <a [routerLink]="'/'+objBlogList.postId">
           <h6 class="post-title">
             {{objBlogList.postTitle}}
-          </h6>
+          </h6> </a>
+          <a [routerLink]="'/'+objBlogList.postId">
           <h3 class="post-subtitle">
             {{objBlogList.postDescription}}
           </h3>
