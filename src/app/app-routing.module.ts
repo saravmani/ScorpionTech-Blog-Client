@@ -17,6 +17,11 @@ const routes: Routes = [
     component: DocumentViewerComponent
   },
   {
+    path: 'codeviewer/:docid',
+    pathMatch: 'full',
+    component: DocumentViewerComponent
+  },
+  {
     path: '**',
     pathMatch: 'full',
     component: BlogListComponent
