@@ -8,6 +8,7 @@ export interface BlogDetails {
   postTitle: string;
   postDescription: string;
   postedBy: string;
+  Tags: string;
   postedOn: Date;
 }
 
