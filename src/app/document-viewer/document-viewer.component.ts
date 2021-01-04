@@ -1,9 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
+
+import * as mermaid from 'mermaid';
+
 import { ServerApiService } from '../services/server-api.service';
 import { Feedback } from '../Model/Feedback';
-import { environment } from 'src/environments/environment';
-import { Meta, Title } from '@angular/platform-browser';
+
+
+
+// declare var mermaid: any;
 
 @Component({
   selector: 'app-document-viewer',
@@ -16,10 +23,14 @@ export class DocumentViewerComponent implements OnInit {
   public postId = '';
   public feedbackText = '';
   public feedback: Feedback = {};
-  public documentBaseURL = environment.documentBaseURL;
+  public documentBaseURL = environment.documentBaseURL;;
+
   public isLiked = false;
   public isDisLiked = false;
   public isDocLoaded = false;
+
+  // @ViewChild('mermaid') mermass: ElementRef | undefined;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private serverApiService: ServerApiService,
@@ -27,6 +38,9 @@ export class DocumentViewerComponent implements OnInit {
     private meta: Meta) { }
 
   ngOnInit(): void {
+
+
+
     this.activatedRoute.params.subscribe(a => {
       this.postId = a.docid;
       this.feedback.postId = a.docid;
@@ -40,9 +54,41 @@ export class DocumentViewerComponent implements OnInit {
   }
   onMarkDownDocLoad(): void {
     this.isDocLoaded = true;
+    const config = {
+
+      theme: 'default',
+      logLevel: 1,
+
+      startOnLoad: true,
+      flowchart: {
+        useMaxWidth: false,
+        htmlLabels: false,
+        curve: 'linear',
+
+      },
+      securityLevel: 'loose',
+    };
+
+    const mm: any = mermaid;
+    mm.initialize(config);
+    mm.init();
+
+    // if (this.mermass) {
+    //   const element: any = this.mermass.nativeElement;
+
+    //   const graphDefinition = `graph LR
+    //      A[Christmas] --- B[wrew] `;
+
+    //   mermaid.render('graphDiv', graphDefinition, (svgCode: any, bindFunctions: any) => {
+    //     element.innerHTML = svgCode;
+    //     bindFunctions(element);
+    //   });
+    // }
   }
 
   public PostFeedback(): void {
+
+
     if (this.feedback.feedbackText && this.feedback.feedbackText !== '') {
       this.inProgress = true;
       this.Response.ResponseMessage = 'Posting .. ';
@@ -65,6 +111,10 @@ export class DocumentViewerComponent implements OnInit {
   }
 
   public likePost(): void {
+
+
+
+
     if (!this.isLiked) {
       this.isLiked = true;
       this.isDisLiked = false;
