@@ -54,6 +54,7 @@ export class DocumentViewerComponent implements OnInit {
   }
   onMarkDownDocLoad(): void {
     this.isDocLoaded = true;
+
     const config = {
 
       theme: 'default',
@@ -73,17 +74,7 @@ export class DocumentViewerComponent implements OnInit {
     mm.initialize(config);
     mm.init();
 
-    // if (this.mermass) {
-    //   const element: any = this.mermass.nativeElement;
 
-    //   const graphDefinition = `graph LR
-    //      A[Christmas] --- B[wrew] `;
-
-    //   mermaid.render('graphDiv', graphDefinition, (svgCode: any, bindFunctions: any) => {
-    //     element.innerHTML = svgCode;
-    //     bindFunctions(element);
-    //   });
-    // }
   }
 
   public PostFeedback(): void {
