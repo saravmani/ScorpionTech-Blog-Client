@@ -47,7 +47,15 @@ export class AppModule { }
 // function that returns `MarkedOptions` with renderer override
 export function markedOptionsFactory(): MarkedOptions {
   const renderer = new MarkedRenderer();
-
+  renderer.link = (href: string | null, title: string | null, text: string | null): string => {
+    if (href) {
+      const mdTxtIndex = href.indexOf('.md');
+      const lastIndexOfSplitter = href.lastIndexOf('/');
+      const alteredURL = href.substr((lastIndexOfSplitter + 1), ((mdTxtIndex - 1) - lastIndexOfSplitter));
+      return '<a href="' + alteredURL + '">' + text + '</a>';
+    }
+    return '';
+  };
   renderer.code = (code: string, language: any, isEscaped: any) => {
     if (language.match(/^mermaid/)) {
       return '<div class="mermaid">' + code + '</div>';

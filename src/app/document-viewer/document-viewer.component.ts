@@ -23,7 +23,7 @@ export class DocumentViewerComponent implements OnInit {
   public postId = '';
   public feedbackText = '';
   public feedback: Feedback = {};
-  public documentBaseURL = environment.documentBaseURL;;
+  public documentBaseURL = environment.documentBaseURL;
 
   public isLiked = false;
   public isDisLiked = false;
