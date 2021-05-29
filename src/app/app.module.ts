@@ -51,7 +51,8 @@ export function markedOptionsFactory(): MarkedOptions {
     if (href) {
       const mdTxtIndex = href.indexOf('/RefImages/');
       if (mdTxtIndex >= 0) {
-        return '<img src="https://raw.githubusercontent.com/saravmani/mycloud/master/Rem/Self' + href + '"></img>';
+        const newImgUrl = href.substr(mdTxtIndex, href.length - mdTxtIndex);
+        return '<img src="https://raw.githubusercontent.com/saravmani/mycloud/master/Rem/Self' + newImgUrl + '"></img>';
       }
     }
     return '';
