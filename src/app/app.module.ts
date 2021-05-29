@@ -47,10 +47,23 @@ export class AppModule { }
 // function that returns `MarkedOptions` with renderer override
 export function markedOptionsFactory(): MarkedOptions {
   const renderer = new MarkedRenderer();
+  renderer.image = (href: string | null, title: string | null, text: string | null): string => {
+    if (href) {
+      const mdTxtIndex = href.indexOf('/RefImages/');
+      if (mdTxtIndex >= 0) {
+        return '<img src="https://raw.githubusercontent.com/saravmani/mycloud/master/Rem/Self' + href + '"></img>';
+      }
+    }
+    return '';
+  };
+
+
+  // To change Document link to environment specific
+  // in Prod instead of ../../docname.md to docname.md
   renderer.link = (href: string | null, title: string | null, text: string | null): string => {
     if (href) {
       const mdTxtIndex = href.indexOf('.md');
-      const lastIndexOfSplitter = href.lastIndexOf('/');
+      const lastIndexOfSplitter = href.lastIndexOf('/ ');
       const alteredURL = href.substr((lastIndexOfSplitter + 1), ((mdTxtIndex - 1) - lastIndexOfSplitter));
       return '<a href="' + alteredURL + '">' + text + '</a>';
     }
