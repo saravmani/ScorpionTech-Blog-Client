@@ -28,7 +28,7 @@ steps:
     password: 'Catwarcv123#'
     rootDirectory: $(Build.SourcesDirectory)/dist/
     filePatterns: '**'
-    remoteDirectory: '/httpdocs/wwwroot/ClientApp/'
+    remoteDirectory: '/wwwroot/ClientApp/'
     clean: true
     cleanContents: false
     preservePaths: false
